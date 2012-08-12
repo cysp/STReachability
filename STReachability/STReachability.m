@@ -131,9 +131,15 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 }
 
 - (void)dealloc {
-    SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, _runloop, kCFRunLoopDefaultMode);
-    CFRelease(_reachability);
-    CFRelease(_runloop);
+    if (_reachability && _runloop) {
+        SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, _runloop, kCFRunLoopDefaultMode);
+    }
+    if (_reachability) {
+        CFRelease(_reachability);
+    }
+    if (_runloop) {
+        CFRelease(_runloop);
+    }
 }
 
 
