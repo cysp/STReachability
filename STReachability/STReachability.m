@@ -15,6 +15,7 @@
 
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <netinet/in.h>
+#import <arpa/inet.h>
 
 
 @interface STReachability ()
@@ -84,17 +85,44 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
     return [self initWithHost:nil];
 }
 
-- (id)initWithHost:(NSString *)hostname {
+- (id)initWithHost:(NSString *)host {
     NSAssert([NSThread isMainThread], @"not on main thread");
     if ((self = [super init])) {
         _status = STReachabilityStatusUnknown;
 
-        if ([hostname length] == 0) {
-            hostname = nil;
+        if ([host length] == 0) {
+            host = nil;
         }
 
-        if (hostname) {
-            _reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [hostname UTF8String]);
+        if (host) {
+            const char *host_cstr = [host UTF8String];
+
+            struct sockaddr_in address_v4 = {
+                .sin_len = sizeof(struct sockaddr_in),
+                .sin_family = AF_INET,
+            };
+            struct sockaddr_in6 address_v6 = {
+                .sin6_len = sizeof(struct sockaddr_in6),
+                .sin6_family = AF_INET6,
+            };
+
+            struct sockaddr *address = NULL;
+            if (inet_pton(AF_INET, host_cstr, &address_v4.sin_addr) == 1) {
+                address = (struct sockaddr *)&address_v4;
+            } else if (inet_pton(AF_INET6, host_cstr, &address_v6.sin6_addr) == 1) {
+                address = (struct sockaddr *)&address_v6;
+            }
+
+            if (address) {
+                _reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, address);
+
+                SCNetworkReachabilityFlags flags = 0;
+                if (SCNetworkReachabilityGetFlags(_reachability, &flags)) {
+                    _status = STReachabilityStatusFromFlags(flags);
+                }
+            } else {
+                _reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, host_cstr);
+            }
         } else {
             struct sockaddr_in address = {
                 .sin_len = sizeof(struct sockaddr_in),
