@@ -119,7 +119,7 @@ static UIView *UIViewFindFirstResponder(UIView *);
 
 @synthesize reachabilityHostname = _reachabilityHostname;
 - (void)setReachabilityHostname:(NSString *)reachabilityHostname {
-    if (![_reachabilityHostname isEqualToString:reachabilityHostname]) {
+    if (_reachabilityHostname != reachabilityHostname || (_reachabilityHostname && reachabilityHostname && ![_reachabilityHostname isEqualToString:reachabilityHostname])) {
         _reachabilityHostname = [reachabilityHostname copy];
         if ([_reachabilityHostname length] == 0) {
             [self setReachability:[STReachability reachability]];
