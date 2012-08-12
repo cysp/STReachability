@@ -6,6 +6,11 @@
 //  Copyright (c) 2012 Scott Talbot. All rights reserved.
 //
 
+#if ! (defined(__has_feature) && __has_feature(objc_arc))
+# error "STReachability must be compiled with ARC enabled"
+#endif
+
+
 #import "STReachability.h"
 
 #import <SystemConfiguration/SystemConfiguration.h>
