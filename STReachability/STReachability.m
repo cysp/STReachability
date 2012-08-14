@@ -49,6 +49,42 @@ extern BOOL STReachabilityStatusIsUnreachable(enum STReachabilityStatus status) 
 }
 
 
+static NSString *NSStringCreateFromReachabilityFlags(SCNetworkReachabilityFlags flags) {
+    char cstr[11] = "--,-------";
+
+    if (flags & kSCNetworkReachabilityFlagsIsWWAN) {
+        cstr[0] = 'W';
+    }
+    if (flags & kSCNetworkReachabilityFlagsReachable) {
+        cstr[1] = 'R';
+    }
+
+    if (flags & kSCNetworkReachabilityFlagsConnectionRequired) {
+        cstr[3] = 'c';
+    }
+    if (flags & kSCNetworkReachabilityFlagsTransientConnection) {
+        cstr[4] = 't';
+    }
+    if (flags & kSCNetworkReachabilityFlagsInterventionRequired) {
+        cstr[5] = 'i';
+    }
+    if (flags & kSCNetworkReachabilityFlagsConnectionOnTraffic) {
+        cstr[6] = 'C';
+    }
+    if (flags & kSCNetworkReachabilityFlagsConnectionOnDemand) {
+        cstr[7] = 'D';
+    }
+    if (flags & kSCNetworkReachabilityFlagsIsLocalAddress) {
+        cstr[8] = 'l';
+    }
+    if (flags & kSCNetworkReachabilityFlagsIsDirect) {
+        cstr[9] = 'd';
+    }
+
+    return [[NSString alloc] initWithBytes:cstr length:sizeof(cstr) encoding:NSASCIIStringEncoding];
+}
+
+
 static enum STReachabilityStatus STReachabilityStatusFromFlags(SCNetworkReachabilityFlags flags) {
     if (flags & kSCNetworkReachabilityFlagsReachable) {
         if (flags & kSCNetworkReachabilityFlagsIsWWAN) {
