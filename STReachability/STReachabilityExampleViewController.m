@@ -175,7 +175,7 @@ static NSString *NSStringFromSTReachabilityStatus(enum STReachabilityStatus stat
             return @"Reachable (WWAN)";
     }
 
-    NSCAssert(0, @"unreachable");
+    NSCAssert(0, @"unreachable", nil);
 
     return [NSString stringWithFormat:@"Unknown STReachabilityStatus: %d", status];
 }

@@ -86,7 +86,7 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 }
 
 - (id)initWithHost:(NSString *)host {
-    NSAssert([NSThread isMainThread], @"not on main thread");
+    NSAssert([NSThread isMainThread], @"not on main thread", nil);
     if ((self = [super init])) {
         _status = STReachabilityStatusUnknown;
 
@@ -127,7 +127,7 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
             struct sockaddr_in address = {
                 .sin_len = sizeof(struct sockaddr_in),
                 .sin_family = AF_INET,
-                .sin_addr = INADDR_ANY,
+                .sin_addr = { .s_addr = INADDR_ANY },
             };
             _reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)&address);
 
