@@ -90,7 +90,22 @@ static enum STReachabilityStatus STReachabilityStatusFromFlags(SCNetworkReachabi
         if (flags & kSCNetworkReachabilityFlagsIsWWAN) {
             return STReachabilityStatusReachableViaWWAN;
         }
-        return STReachabilityStatusReachableViaWifi;
+
+        // the following voodoo comes from DDG (via ASI)
+        SCNetworkReachabilityFlags interestingFlags = flags & (kSCNetworkReachabilityFlagsConnectionRequired|kSCNetworkReachabilityFlagsTransientConnection|kSCNetworkReachabilityFlagsInterventionRequired|kSCNetworkReachabilityFlagsConnectionOnTraffic|kSCNetworkReachabilityFlagsConnectionOnDemand);
+
+        if (interestingFlags == (kSCNetworkReachabilityFlagsConnectionRequired|kSCNetworkReachabilityFlagsTransientConnection)) {
+            return STReachabilityStatusUnreachable;
+        }
+
+        if (interestingFlags & (kSCNetworkFlagsConnectionRequired|kSCNetworkFlagsTransientConnection)) {
+            return STReachabilityStatusReachableViaWifi;
+        }
+        if (interestingFlags == 0) {
+            return STReachabilityStatusReachableViaWifi;
+        }
+
+        NSCAssert(0, @"unreachable (pun intended)", nil);
     }
 
     return STReachabilityStatusUnreachable;
