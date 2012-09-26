@@ -1,17 +1,16 @@
 //
-//  STReachabilityExampleAppDelegate.m
+//  STReachabilityDemoApplicationDelegate.m
 //  STReachability
 //
-//  Created by Scott Talbot on 9/08/12.
 //  Copyright (c) 2012 Scott Talbot. All rights reserved.
 //
 
-#import "STReachabilityExampleAppDelegate.h"
+#import "STReachabilityDemoApplicationDelegate.h"
 
-#import "STReachabilityExampleViewController.h"
+#import "STReachabilityDemoViewController.h"
 
 
-@implementation STReachabilityExampleAppDelegate
+@implementation STReachabilityDemoApplicationDelegate
 
 @synthesize window = _window;
 - (void)setWindow:(UIWindow *)window {
@@ -27,7 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    STReachabilityExampleViewController *viewController = [[STReachabilityExampleViewController alloc] initWithNibName:nil bundle:nil];
+    STReachabilityDemoViewController *viewController = [[STReachabilityDemoViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     [window setRootViewController:navigationController];
 

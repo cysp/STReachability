@@ -1,12 +1,12 @@
 //
-//  STReachabilityExampleViewController.m
+//  STReachabilityDemoViewController.m
 //  STReachability
 //
 //  Created by Scott Talbot on 9/08/12.
 //  Copyright (c) 2012 Scott Talbot. All rights reserved.
 //
 
-#import "STReachabilityExampleViewController.h"
+#import "STReachabilityDemoViewController.h"
 #import "STReachability.h"
 
 
@@ -15,19 +15,19 @@ static NSString *NSStringFromSTReachabilityStatus(enum STReachabilityStatus);
 static UIView *UIViewFindFirstResponder(UIView *);
 
 
-@interface STReachabilityExampleViewController () <UITextFieldDelegate>
+@interface STReachabilityDemoViewController () <UITextFieldDelegate>
 @property (nonatomic,copy) STReachability *reachability;
 @property (nonatomic,copy) NSString *reachabilityHostname;
 @property (nonatomic,readonly) NSCharacterSet *reachabilityHostnameBlacklistCharacterSet;
 @end
 
 
-@implementation STReachabilityExampleViewController {
+@implementation STReachabilityDemoViewController {
     STReachability *_reachability;
     NSString *_reachabilityHostname;
-    __weak UITextField *_reachabilityHostnameTextField;
+    __unsafe_unretained UITextField *_reachabilityHostnameTextField;
     NSCharacterSet *_reachabilityHostnameBlacklistCharacterSet;
-    __weak UILabel *_reachabilityStatusLabel;
+    __unsafe_unretained UILabel *_reachabilityStatusLabel;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -84,8 +84,17 @@ static UIView *UIViewFindFirstResponder(UIView *);
 }
 
 - (void)viewDidLoad {
+	[super viewDidLoad];
+
     [_reachabilityHostnameTextField setText:_reachabilityHostname];
     [_reachabilityStatusLabel setText:NSStringFromSTReachabilityStatus(_reachability.status)];
+}
+
+- (void)viewDidUnload {
+	[super viewDidUnload];
+
+	_reachabilityHostnameTextField = nil;
+	_reachabilityStatusLabel = nil;
 }
 
 
@@ -157,7 +166,10 @@ static UIView *UIViewFindFirstResponder(UIView *);
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (context == &_reachability) {
         [_reachabilityStatusLabel setText:NSStringFromSTReachabilityStatus(_reachability.status)];
+		return;
     }
+
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  STReachabilityExampleViewController.h
+//  STReachabilityDemoViewController.h
 //  STReachability
 //
 //  Created by Scott Talbot on 9/08/12.
@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 
-@interface STReachabilityExampleViewController : UIViewController
+@interface STReachabilityDemoViewController : UIViewController
 @end
