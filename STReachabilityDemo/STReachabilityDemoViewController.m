@@ -30,6 +30,20 @@ static UIView *UIViewFindFirstResponder(UIView *);
     __unsafe_unretained UILabel *_reachabilityStatusLabel;
 }
 
++ (void)load {
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"STDemo.registerViewControllerClass" object:self];
+	});
+}
+
++ (NSString *)stDemoTitle {
+	return @"STReachability";
+}
+
++ (id)stDemoViewController {
+	return [[self alloc] initWithNibName:nil bundle:nil];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         self.title = @"Reachability";

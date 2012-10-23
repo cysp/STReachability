@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C4EC7DC1636A06F00C87387 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D5415D3EA65002AA53C /* Foundation.framework */; };
+		2C4EC7E81636A07C00C87387 /* STReachabilityDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D6B15D3EA66002AA53C /* STReachabilityDemoViewController.m */; };
 		2C6C1F2916130F5A00A43C0F /* libSTReachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBDF51D161308FE003AC923 /* libSTReachability.a */; };
 		2C6C1F2A16130F7500A43C0F /* STReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D8B15D60CEA002AA53C /* STReachability.m */; };
 		2C6C1F2B16130F8500A43C0F /* STReachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDE1D8A15D60CEA002AA53C /* STReachability.h */; };
@@ -44,6 +46,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2C4EC7D91636A06F00C87387 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CBDF51B161308FE003AC923 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C4EC7DB1636A06F00C87387 /* libSTReachabilityDemoViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTReachabilityDemoViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBDF51D161308FE003AC923 /* libSTReachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTReachability.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBDF531161309C5003AC923 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2CDE1D4E15D3EA65002AA53C /* STReachabilityDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STReachabilityDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +92,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C4EC7D81636A06F00C87387 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C4EC7DC1636A06F00C87387 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CBDF51A161308FE003AC923 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -139,6 +159,7 @@
 				2CDE1D4E15D3EA65002AA53C /* STReachabilityDemo.app */,
 				2CDE1D7215D3EA66002AA53C /* STReachabilityTests.octest */,
 				2CBDF51D161308FE003AC923 /* libSTReachability.a */,
+				2C4EC7DB1636A06F00C87387 /* libSTReachabilityDemoViewController.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,6 +212,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2C4EC7DA1636A06F00C87387 /* STReachabilityDemoViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C4EC7E61636A06F00C87387 /* Build configuration list for PBXNativeTarget "STReachabilityDemoViewController" */;
+			buildPhases = (
+				2C4EC7D71636A06F00C87387 /* Sources */,
+				2C4EC7D81636A06F00C87387 /* Frameworks */,
+				2C4EC7D91636A06F00C87387 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = STReachabilityDemoViewController;
+			productName = STReachabilityDemoViewController;
+			productReference = 2C4EC7DB1636A06F00C87387 /* libSTReachabilityDemoViewController.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		2CBDF51C161308FE003AC923 /* STReachability */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CBDF526161308FF003AC923 /* Build configuration list for PBXNativeTarget "STReachability" */;
@@ -269,6 +307,7 @@
 			targets = (
 				2CBDF51C161308FE003AC923 /* STReachability */,
 				2CDE1D4D15D3EA65002AA53C /* STReachabilityDemo */,
+				2C4EC7DA1636A06F00C87387 /* STReachabilityDemoViewController */,
 				2CDE1D7115D3EA66002AA53C /* STReachabilityTests */,
 			);
 		};
@@ -309,6 +348,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C4EC7D71636A06F00C87387 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C4EC7E81636A07C00C87387 /* STReachabilityDemoViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2CBDF519161308FE003AC923 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -351,6 +398,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2C4EC7E41636A06F00C87387 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/STReachabilityDemoViewController.dst;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2C4EC7E51636A06F00C87387 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_EMPTY_BODY = YES;
+				DSTROOT = /tmp/STReachabilityDemoViewController.dst;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		2CBDF527161308FF003AC923 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -493,6 +563,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C4EC7E61636A06F00C87387 /* Build configuration list for PBXNativeTarget "STReachabilityDemoViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C4EC7E41636A06F00C87387 /* Debug */,
+				2C4EC7E51636A06F00C87387 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2CBDF526161308FF003AC923 /* Build configuration list for PBXNativeTarget "STReachability" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
