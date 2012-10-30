@@ -570,6 +570,7 @@
 				2C4EC7E51636A06F00C87387 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2CBDF526161308FF003AC923 /* Build configuration list for PBXNativeTarget "STReachability" */ = {
 			isa = XCConfigurationList;
