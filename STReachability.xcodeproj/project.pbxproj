@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C6C1F2916130F5A00A43C0F /* libSTReachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBDF51D161308FE003AC923 /* libSTReachability.a */; };
 		2C6C1F2A16130F7500A43C0F /* STReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D8B15D60CEA002AA53C /* STReachability.m */; };
 		2C6C1F2B16130F8500A43C0F /* STReachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDE1D8A15D60CEA002AA53C /* STReachability.h */; };
 		2CBDF51E161308FF003AC923 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D5415D3EA65002AA53C /* Foundation.framework */; };
@@ -19,21 +18,10 @@
 		2CDE1D5F15D3EA66002AA53C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D5E15D3EA65002AA53C /* main.m */; };
 		2CDE1D6315D3EA66002AA53C /* STReachabilityDemoApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D6215D3EA66002AA53C /* STReachabilityDemoApplicationDelegate.m */; };
 		2CDE1D6C15D3EA66002AA53C /* STReachabilityDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D6B15D3EA66002AA53C /* STReachabilityDemoViewController.m */; };
-		2CDE1D7415D3EA66002AA53C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D7315D3EA66002AA53C /* SenTestingKit.framework */; };
-		2CDE1D7515D3EA66002AA53C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D5215D3EA65002AA53C /* UIKit.framework */; };
-		2CDE1D7615D3EA66002AA53C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D5415D3EA65002AA53C /* Foundation.framework */; };
-		2CDE1D8115D3EA66002AA53C /* STReachabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CDE1D8015D3EA66002AA53C /* STReachabilityTests.m */; };
 		2CDE1D8E15D617B7002AA53C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D8D15D617B7002AA53C /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C6C1F2616130F5300A43C0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2CDE1D4515D3EA65002AA53C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2CBDF51C161308FE003AC923;
-			remoteInfo = STReachability;
-		};
 		2CBDF52E161309AA003AC923 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2CDE1D4515D3EA65002AA53C /* Project object */;
@@ -69,11 +57,7 @@
 		2CDE1D6215D3EA66002AA53C /* STReachabilityDemoApplicationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STReachabilityDemoApplicationDelegate.m; sourceTree = "<group>"; };
 		2CDE1D6A15D3EA66002AA53C /* STReachabilityDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STReachabilityDemoViewController.h; sourceTree = "<group>"; };
 		2CDE1D6B15D3EA66002AA53C /* STReachabilityDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STReachabilityDemoViewController.m; sourceTree = "<group>"; };
-		2CDE1D7215D3EA66002AA53C /* STReachabilityTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STReachabilityTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDE1D7315D3EA66002AA53C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		2CDE1D7B15D3EA66002AA53C /* STReachabilityTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "STReachabilityTests-Info.plist"; sourceTree = "<group>"; };
-		2CDE1D7F15D3EA66002AA53C /* STReachabilityTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STReachabilityTests.h; sourceTree = "<group>"; };
-		2CDE1D8015D3EA66002AA53C /* STReachabilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STReachabilityTests.m; sourceTree = "<group>"; };
 		2CDE1D8A15D60CEA002AA53C /* STReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STReachability.h; sourceTree = "<group>"; };
 		2CDE1D8B15D60CEA002AA53C /* STReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STReachability.m; sourceTree = "<group>"; };
 		2CDE1D8D15D617B7002AA53C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -100,17 +84,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CDE1D6E15D3EA66002AA53C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2CDE1D7415D3EA66002AA53C /* SenTestingKit.framework in Frameworks */,
-				2CDE1D7515D3EA66002AA53C /* UIKit.framework in Frameworks */,
-				2CDE1D7615D3EA66002AA53C /* Foundation.framework in Frameworks */,
-				2C6C1F2916130F5A00A43C0F /* libSTReachability.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -126,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				2CDE1D8F15D733B9002AA53C /* STReachability */,
-				2CDE1D7915D3EA66002AA53C /* STReachabilityTests */,
 				2CDE1D5815D3EA65002AA53C /* STReachabilityDemo */,
 				2CDE1D5115D3EA65002AA53C /* Frameworks */,
 				2CDE1D4F15D3EA65002AA53C /* Products */,
@@ -137,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				2CDE1D4E15D3EA65002AA53C /* STReachabilityDemo.app */,
-				2CDE1D7215D3EA66002AA53C /* STReachabilityTests.octest */,
 				2CBDF51D161308FE003AC923 /* libSTReachability.a */,
 			);
 			name = Products;
@@ -167,16 +138,6 @@
 				2C2FDE7C1624532100BDF161 /* Resources */,
 			);
 			path = STReachabilityDemo;
-			sourceTree = "<group>";
-		};
-		2CDE1D7915D3EA66002AA53C /* STReachabilityTests */ = {
-			isa = PBXGroup;
-			children = (
-				2CDE1D7B15D3EA66002AA53C /* STReachabilityTests-Info.plist */,
-				2CDE1D7F15D3EA66002AA53C /* STReachabilityTests.h */,
-				2CDE1D8015D3EA66002AA53C /* STReachabilityTests.m */,
-			);
-			path = STReachabilityTests;
 			sourceTree = "<group>";
 		};
 		2CDE1D8F15D733B9002AA53C /* STReachability */ = {
@@ -226,25 +187,6 @@
 			productReference = 2CDE1D4E15D3EA65002AA53C /* STReachabilityDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2CDE1D7115D3EA66002AA53C /* STReachabilityTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2CDE1D8715D3EA66002AA53C /* Build configuration list for PBXNativeTarget "STReachabilityTests" */;
-			buildPhases = (
-				2CDE1D6D15D3EA66002AA53C /* Sources */,
-				2CDE1D6E15D3EA66002AA53C /* Frameworks */,
-				2CDE1D6F15D3EA66002AA53C /* Resources */,
-				2CDE1D7015D3EA66002AA53C /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2C6C1F2716130F5300A43C0F /* PBXTargetDependency */,
-			);
-			name = STReachabilityTests;
-			productName = STReachabilityTests;
-			productReference = 2CDE1D7215D3EA66002AA53C /* STReachabilityTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -269,7 +211,6 @@
 			targets = (
 				2CBDF51C161308FE003AC923 /* STReachability */,
 				2CDE1D4D15D3EA65002AA53C /* STReachabilityDemo */,
-				2CDE1D7115D3EA66002AA53C /* STReachabilityTests */,
 			);
 		};
 /* End PBXProject section */
@@ -283,30 +224,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CDE1D6F15D3EA66002AA53C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2CDE1D7015D3EA66002AA53C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2CBDF519161308FE003AC923 /* Sources */ = {
@@ -327,22 +245,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2CDE1D6D15D3EA66002AA53C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2CDE1D8115D3EA66002AA53C /* STReachabilityTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2C6C1F2716130F5300A43C0F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2CBDF51C161308FE003AC923 /* STReachability */;
-			targetProxy = 2C6C1F2616130F5300A43C0F /* PBXContainerItemProxy */;
-		};
 		2CBDF52F161309AA003AC923 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2CBDF51C161308FE003AC923 /* STReachability */;
@@ -456,40 +361,6 @@
 			};
 			name = Release;
 		};
-		2CDE1D8815D3EA66002AA53C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/STReachability.app/STReachability";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "STReachability/STReachability-Prefix.pch";
-				INFOPLIST_FILE = "STReachabilityTests/STReachabilityTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		2CDE1D8915D3EA66002AA53C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/STReachability.app/STReachability";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "STReachability/STReachability-Prefix.pch";
-				INFOPLIST_FILE = "STReachabilityTests/STReachabilityTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -516,15 +387,6 @@
 			buildConfigurations = (
 				2CDE1D8515D3EA66002AA53C /* Debug */,
 				2CDE1D8615D3EA66002AA53C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2CDE1D8715D3EA66002AA53C /* Build configuration list for PBXNativeTarget "STReachabilityTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2CDE1D8815D3EA66002AA53C /* Debug */,
-				2CDE1D8915D3EA66002AA53C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
