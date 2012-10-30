@@ -23,10 +23,16 @@ extern BOOL STReachabilityStatusIsReachable(enum STReachabilityStatus);
 extern BOOL STReachabilityStatusIsUnreachable(enum STReachabilityStatus);
 
 
+typedef void(^STReachabilityBlock)(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus);
+
+
 @interface STReachability : NSObject
 
 + (STReachability *)reachability;
++ (STReachability *)reachabilityWithBlock:(STReachabilityBlock)block;
+
 + (STReachability *)reachabilityWithHost:(NSString *)hostname;
++ (STReachability *)reachabilityWithHost:(NSString *)hostname block:(STReachabilityBlock)block;
 
 @property (nonatomic,assign,readonly) enum STReachabilityStatus status;
 

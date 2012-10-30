@@ -22,7 +22,7 @@
 
 
 @interface STReachability ()
-- (id)initWithHost:(NSString *)hostname;
+- (id)initWithHost:(NSString *)hostname block:(STReachabilityBlock)block;
 @property (nonatomic,assign) enum STReachabilityStatus status;
 @end
 
@@ -125,21 +125,30 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
     SCNetworkReachabilityRef _reachability;
     CFRunLoopRef _runloop;
     enum STReachabilityStatus _status;
+    STReachabilityBlock _block;
 }
 
 + (STReachability *)reachability {
-    return [[self alloc] initWithHost:nil];
+    return [[self alloc] initWithHost:nil block:nil];
+}
+
++ (STReachability *)reachabilityWithBlock:(STReachabilityBlock)block {
+    return [[self alloc] initWithHost:nil block:block];
 }
 
 + (STReachability *)reachabilityWithHost:(NSString *)hostname {
-    return [[self alloc] initWithHost:hostname];
+    return [[self alloc] initWithHost:hostname block:nil];
+}
+
++ (STReachability *)reachabilityWithHost:(NSString *)hostname block:(STReachabilityBlock)block {
+    return [[self alloc] initWithHost:hostname block:block];
 }
 
 - (id)init {
-    return [self initWithHost:nil];
+    return [self initWithHost:nil block:nil];
 }
 
-- (id)initWithHost:(NSString *)host {
+- (id)initWithHost:(NSString *)host block:(STReachabilityBlock)block {
     NSAssert([NSThread isMainThread], @"not on main thread", nil);
     if ((self = [super init])) {
         _status = STReachabilityStatusUnknown;
@@ -194,6 +203,8 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
             return nil;
         }
 
+        _block = [block copy];
+
         SCNetworkReachabilityContext ctx = {
             .version = 0,
             .info = (__bridge void *)(self),
@@ -228,9 +239,13 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 + (BOOL)automaticallyNotifiesObserversOfStatus { return NO; }
 - (void)setStatus:(enum STReachabilityStatus)status {
     if (status != _status) {
+        enum STReachabilityStatus previousStatus = _status;
         [self willChangeValueForKey:@"status"];
         _status = status;
         [self didChangeValueForKey:@"status"];
+        if (_block) {
+            _block(_status, previousStatus);
+        }
     }
 }
 
