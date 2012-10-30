@@ -21,6 +21,9 @@
 #import <arpa/inet.h>
 
 
+static dispatch_queue_t gSTReachabilityCallbackQueue = nil;
+
+
 @interface STReachability ()
 - (id)initWithHost:(NSString *)hostname;
 @property (nonatomic,assign) enum STReachabilityStatus status;
@@ -123,8 +126,13 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 
 @implementation STReachability {
     SCNetworkReachabilityRef _reachability;
-    CFRunLoopRef _runloop;
     enum STReachabilityStatus _status;
+}
+
++ (void)initialize {
+    if (self == [STReachability class]) {
+        gSTReachabilityCallbackQueue = dispatch_queue_create("STReachability.callbackQueue", DISPATCH_QUEUE_CONCURRENT);
+    }
 }
 
 + (STReachability *)reachability {
@@ -204,8 +212,8 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
         if (!SCNetworkReachabilitySetCallback(_reachability, STReachabilityCallback, &ctx)) {
             return nil;
         }
-        CFRetain(_runloop = CFRunLoopGetCurrent());
-        if (!SCNetworkReachabilityScheduleWithRunLoop(_reachability, _runloop, kCFRunLoopDefaultMode)) {
+
+        if (!SCNetworkReachabilitySetDispatchQueue(_reachability, gSTReachabilityCallbackQueue)) {
             return nil;
         }
     }
@@ -213,14 +221,11 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 }
 
 - (void)dealloc {
-    if (_reachability && _runloop) {
-        SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, _runloop, kCFRunLoopDefaultMode);
+    if (_reachability) {
+        SCNetworkReachabilitySetDispatchQueue(_reachability, NULL);
     }
     if (_reachability) {
         CFRelease(_reachability);
-    }
-    if (_runloop) {
-        CFRelease(_runloop);
     }
 }
 
