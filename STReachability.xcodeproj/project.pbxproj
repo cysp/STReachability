@@ -118,11 +118,11 @@
 		2CDE1D5115D3EA65002AA53C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2CDE1D5215D3EA65002AA53C /* UIKit.framework */,
 				2CDE1D5415D3EA65002AA53C /* Foundation.framework */,
+				2CDE1D5215D3EA65002AA53C /* UIKit.framework */,
 				2CDE1D5615D3EA65002AA53C /* CoreGraphics.framework */,
-				2CDE1D8D15D617B7002AA53C /* SystemConfiguration.framework */,
 				2CDE1D7315D3EA66002AA53C /* SenTestingKit.framework */,
+				2CDE1D8D15D617B7002AA53C /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
