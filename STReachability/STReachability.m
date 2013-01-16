@@ -208,8 +208,9 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 		SCNetworkReachabilityContext ctx = {
 			.version = 0,
 			.info = (__bridge void *)(self),
-			.retain = NULL,
-			.release = NULL,
+			.retain = CFRetain,
+			.release = CFRelease,
+			.copyDescription = CFCopyDescription,
 		};
 
 		if (!SCNetworkReachabilitySetCallback(_reachability, STReachabilityCallback, &ctx)) {
