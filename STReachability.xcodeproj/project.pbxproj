@@ -109,8 +109,8 @@
 		2CDE1D4F15D3EA65002AA53C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CDE1D4E15D3EA65002AA53C /* STReachabilityDemo.app */,
 				2CBDF51D161308FE003AC923 /* libSTReachability.a */,
+				2CDE1D4E15D3EA65002AA53C /* STReachabilityDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
