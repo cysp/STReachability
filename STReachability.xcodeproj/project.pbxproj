@@ -104,6 +104,7 @@
 				2CDE1D4F15D3EA65002AA53C /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		2CDE1D4F15D3EA65002AA53C /* Products */ = {
 			isa = PBXGroup;

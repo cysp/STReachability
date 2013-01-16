@@ -13,10 +13,10 @@
 
 
 NS_ENUM(NSInteger, STReachabilityStatus) {
-    STReachabilityStatusUnknown = -1,
-    STReachabilityStatusUnreachable = 0,
-    STReachabilityStatusReachableViaWifi = 1,
-    STReachabilityStatusReachableViaWWAN = 2,
+	STReachabilityStatusUnknown = -1,
+	STReachabilityStatusUnreachable = 0,
+	STReachabilityStatusReachableViaWifi = 1,
+	STReachabilityStatusReachableViaWWAN = 2,
 };
 
 extern BOOL STReachabilityStatusIsReachable(enum STReachabilityStatus);
