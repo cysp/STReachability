@@ -115,6 +115,8 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 	if ((self = [super init])) {
 		_status = STReachabilityStatusUnknown;
 
+		BOOL shouldSendInitialStatusCallback = NO;
+
 		if ([host length] == 0) {
 			host = nil;
 		}
@@ -145,6 +147,8 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 				if (SCNetworkReachabilityGetFlags(_reachability, &flags)) {
 					_status = STReachabilityStatusFromFlags(flags);
 				}
+
+				shouldSendInitialStatusCallback = YES;
 			} else {
 				_reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, host_cstr);
 			}
@@ -160,12 +164,24 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 			if (SCNetworkReachabilityGetFlags(_reachability, &flags)) {
 				_status = STReachabilityStatusFromFlags(flags);
 			}
+
+			shouldSendInitialStatusCallback = YES;
 		}
 		if (!_reachability) {
 			return nil;
 		}
 
 		_block = [block copy];
+
+		dispatch_queue_t queue = dispatch_get_main_queue();
+
+		if (shouldSendInitialStatusCallback) {
+			if (_block) {
+				dispatch_async(queue, ^{
+					_block(_status, STReachabilityStatusUnknown);
+				});
+			}
+		}
 
 		SCNetworkReachabilityContext ctx = {
 			.version = 0,
@@ -179,7 +195,7 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 			return nil;
 		}
 
-		if (!SCNetworkReachabilitySetDispatchQueue(_reachability, dispatch_get_main_queue())) {
+		if (!SCNetworkReachabilitySetDispatchQueue(_reachability, queue)) {
 			return nil;
 		}
 	}
