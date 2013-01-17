@@ -10,7 +10,7 @@
 
 
 static BOOL gSTReachabilityIsMocking = NO;
-static NSMutableSet *gSTReachabilityMocks = nil;
+static NSHashTable *gSTReachabilityMocks = nil;
 
 
 @interface STMockReachability : NSObject
@@ -71,7 +71,7 @@ static NSMutableSet *gSTReachabilityMocks = nil;
 @implementation STReachability (Mocking)
 
 + (void)load {
-	gSTReachabilityMocks = [[NSMutableSet alloc] init];
+	gSTReachabilityMocks = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsObjectPointerPersonality|NSPointerFunctionsWeakMemory capacity:0];
 }
 
 + (id)allocWithZone:(NSZone *)zone {
