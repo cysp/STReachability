@@ -13,10 +13,13 @@
 
 @implementation STReachabilityTests
 
-- (void)setUp {
-	[super setUp];
+- (void)setUpTestWithSelector:(SEL)testMethod {
+	[super setUpTestWithSelector:testMethod];
 
-	[STReachability setMocking:YES];
+	NSString * const testMethodString = NSStringFromSelector(testMethod);
+	if ([testMethodString hasSuffix:@"Mocked"]) {
+		[STReachability setMocking:YES];
+	}
 }
 
 - (void)tearDown {
@@ -26,7 +29,7 @@
 }
 
 
-- (void)testMocking {
+- (void)testMocked {
 	{
 		__block NSUInteger nReachabilityStatusChangesSeen = 0;
 
