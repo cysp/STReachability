@@ -97,4 +97,68 @@
 	STAssertNil(reachability, @"", nil);
 }
 
+- (void)testReachabilityInternet {
+	NSMutableArray * const reachabilityStatusesSeen = [[NSMutableArray alloc] initWithCapacity:1];
+	[STReachability reachabilityWithBlock:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
+		[reachabilityStatusesSeen addObject:@(status)];
+	}];
+
+	NSDate * const resolutionTimeout = [NSDate dateWithTimeIntervalSinceNow:.5];
+	[[NSRunLoop mainRunLoop] runUntilDate:resolutionTimeout];
+
+	NSUInteger const reachabilityStatusesSeenCount = [reachabilityStatusesSeen count];
+	STAssertEquals(reachabilityStatusesSeenCount, (NSUInteger)1, @"", nil);
+	if (reachabilityStatusesSeenCount > 0) {
+		STAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]), @"", nil);
+	}
+}
+
+- (void)testReachabilityLiteralAddressIPv4 {
+	NSMutableArray * const reachabilityStatusesSeen = [[NSMutableArray alloc] initWithCapacity:1];
+	[STReachability reachabilityWithHost:@"8.8.8.8" block:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
+		[reachabilityStatusesSeen addObject:@(status)];
+	}];
+
+	NSDate * const resolutionTimeout = [NSDate dateWithTimeIntervalSinceNow:.5];
+	[[NSRunLoop mainRunLoop] runUntilDate:resolutionTimeout];
+
+	NSUInteger const reachabilityStatusesSeenCount = [reachabilityStatusesSeen count];
+	STAssertEquals(reachabilityStatusesSeenCount, (NSUInteger)1, @"", nil);
+	if (reachabilityStatusesSeenCount > 0) {
+		STAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]), @"", nil);
+	}
+}
+
+- (void)testReachabilityNameResolutionFailure {
+	NSMutableArray * const reachabilityStatusesSeen = [[NSMutableArray alloc] initWithCapacity:1];
+	[STReachability reachabilityWithHost:@"nonexistent.example.org" block:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
+		[reachabilityStatusesSeen addObject:@(status)];
+	}];
+
+	NSDate * const resolutionTimeout = [NSDate dateWithTimeIntervalSinceNow:.5];
+	[[NSRunLoop mainRunLoop] runUntilDate:resolutionTimeout];
+
+	NSUInteger const reachabilityStatusesSeenCount = [reachabilityStatusesSeen count];
+	STAssertEquals(reachabilityStatusesSeenCount, (NSUInteger)1, @"", nil);
+	if (reachabilityStatusesSeenCount > 0) {
+		STAssertTrue(STReachabilityStatusIsUnreachable([reachabilityStatusesSeen[0] unsignedIntegerValue]), @"", nil);
+	}
+}
+
+- (void)testReachabilityNameResolutionSuccess {
+	NSMutableArray * const reachabilityStatusesSeen = [[NSMutableArray alloc] initWithCapacity:1];
+	[STReachability reachabilityWithHost:@"example.org" block:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
+		[reachabilityStatusesSeen addObject:@(status)];
+	}];
+
+	NSDate * const resolutionTimeout = [NSDate dateWithTimeIntervalSinceNow:.5];
+	[[NSRunLoop mainRunLoop] runUntilDate:resolutionTimeout];
+
+	NSUInteger const reachabilityStatusesSeenCount = [reachabilityStatusesSeen count];
+	STAssertEquals(reachabilityStatusesSeenCount, (NSUInteger)1, @"", nil);
+	if (reachabilityStatusesSeenCount > 0) {
+		STAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]), @"", nil);
+	}
+}
+
 @end
