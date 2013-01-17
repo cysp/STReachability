@@ -81,4 +81,20 @@
 	}
 }
 
+- (void)testRetainCycle {
+	__weak STReachability *reachability = nil;
+	@autoreleasepool {
+		reachability = [STReachability reachability];
+	}
+	STAssertNil(reachability, @"", nil);
+}
+
+- (void)testRetainCycleMocked {
+	__weak STReachability *reachability = nil;
+	@autoreleasepool {
+		reachability = [STReachability reachability];
+	}
+	STAssertNil(reachability, @"", nil);
+}
+
 @end
