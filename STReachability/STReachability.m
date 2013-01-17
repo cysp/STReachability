@@ -86,7 +86,6 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 
 @implementation STReachability {
 	SCNetworkReachabilityRef _reachability;
-	CFRunLoopRef _runloop;
 	enum STReachabilityStatus _status;
 	STReachabilityBlock _block;
 }
@@ -179,8 +178,8 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 		if (!SCNetworkReachabilitySetCallback(_reachability, STReachabilityCallback, &ctx)) {
 			return nil;
 		}
-		CFRetain(_runloop = CFRunLoopGetCurrent());
-		if (!SCNetworkReachabilityScheduleWithRunLoop(_reachability, _runloop, kCFRunLoopDefaultMode)) {
+
+		if (!SCNetworkReachabilitySetDispatchQueue(_reachability, dispatch_get_main_queue())) {
 			return nil;
 		}
 	}
@@ -188,14 +187,11 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 }
 
 - (void)dealloc {
-	if (_reachability && _runloop) {
-		SCNetworkReachabilityUnscheduleFromRunLoop(_reachability, _runloop, kCFRunLoopDefaultMode);
+	if (_reachability) {
+		SCNetworkReachabilitySetDispatchQueue(_reachability, nil);
 	}
 	if (_reachability) {
 		CFRelease(_reachability);
-	}
-	if (_runloop) {
-		CFRelease(_runloop);
 	}
 }
 
