@@ -171,8 +171,8 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 		SCNetworkReachabilityContext ctx = {
 			.version = 0,
 			.info = (__bridge void *)(self),
-			.retain = CFRetain,
-			.release = CFRelease,
+			.retain = NULL,
+			.release = NULL,
 			.copyDescription = CFCopyDescription,
 		};
 
