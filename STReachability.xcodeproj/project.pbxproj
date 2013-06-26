@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C61CE6116A6D6D500BA662E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D5415D3EA65002AA53C /* Foundation.framework */; };
-		2C61CE7016A6D7BC00BA662E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D7315D3EA66002AA53C /* SenTestingKit.framework */; };
-		2C61CE7216A6D7BC00BA662E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D5415D3EA65002AA53C /* Foundation.framework */; };
-		2C61CE7B16A6D7BC00BA662E /* STReachabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C61CE7A16A6D7BC00BA662E /* STReachabilityTests.m */; };
-		2C61CE8016A6D99400BA662E /* libSTReachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBDF51D161308FE003AC923 /* libSTReachability.a */; };
-		2C61CE8216A6D9A400BA662E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D8D15D617B7002AA53C /* SystemConfiguration.framework */; };
 		2C61CE5F16A6D6D500BA662E /* STReachability+Mocking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C61CE5A16A6D6B500BA662E /* STReachability+Mocking.m */; };
+		2C61CE6116A6D6D500BA662E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D5415D3EA65002AA53C /* Foundation.framework */; };
 		2C61CE6916A6D72000BA662E /* STReachability+Mocking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C61CE5916A6D6B500BA662E /* STReachability+Mocking.h */; };
 		2C61CE7016A6D7BC00BA662E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D7315D3EA66002AA53C /* SenTestingKit.framework */; };
 		2C61CE7216A6D7BC00BA662E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDE1D5415D3EA65002AA53C /* Foundation.framework */; };
@@ -36,6 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2CAB44DA177ADFF500049CCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CDE1D4515D3EA65002AA53C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C61CE5C16A6D6D500BA662E;
+			remoteInfo = STReachabilityMocking;
+		};
 		2CBDF52E161309AA003AC923 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2CDE1D4515D3EA65002AA53C /* Project object */;
@@ -69,10 +71,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C61CE6F16A6D7BC00BA662E /* STReachabilityTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STReachabilityTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C61CE7516A6D7BC00BA662E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C61CE7916A6D7BC00BA662E /* STReachabilityTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STReachabilityTests.h; sourceTree = "<group>"; };
-		2C61CE7A16A6D7BC00BA662E /* STReachabilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STReachabilityTests.m; sourceTree = "<group>"; };
 		2C61CE5916A6D6B500BA662E /* STReachability+Mocking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STReachability+Mocking.h"; sourceTree = "<group>"; };
 		2C61CE5A16A6D6B500BA662E /* STReachability+Mocking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STReachability+Mocking.m"; sourceTree = "<group>"; };
 		2C61CE6716A6D6D500BA662E /* libSTReachabilityMocking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTReachabilityMocking.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,24 +221,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C61CE6E16A6D7BC00BA662E /* STReachabilityTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C61CE7F16A6D7BC00BA662E /* Build configuration list for PBXNativeTarget "STReachabilityTests" */;
-			buildPhases = (
-				2C61CE6A16A6D7BC00BA662E /* Sources */,
-				2C61CE6B16A6D7BC00BA662E /* Frameworks */,
-				2C61CE6C16A6D7BC00BA662E /* Resources */,
-				2C61CE6D16A6D7BC00BA662E /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = STReachabilityTests;
-			productName = STReachabilityTests;
-			productReference = 2C61CE6F16A6D7BC00BA662E /* STReachabilityTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 		2C61CE5C16A6D6D500BA662E /* STReachabilityMocking */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C61CE6416A6D6D500BA662E /* Build configuration list for PBXNativeTarget "STReachabilityMocking" */;
@@ -270,6 +250,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2CAB44DB177ADFF500049CCD /* PBXTargetDependency */,
 			);
 			name = STReachabilityTests;
 			productName = STReachabilityTests;
@@ -376,14 +357,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2C61CE6A16A6D7BC00BA662E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C61CE7B16A6D7BC00BA662E /* STReachabilityTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2C61CE5D16A6D6D500BA662E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -421,6 +394,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2CAB44DB177ADFF500049CCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C61CE5C16A6D6D500BA662E /* STReachabilityMocking */;
+			targetProxy = 2CAB44DA177ADFF500049CCD /* PBXContainerItemProxy */;
+		};
 		2CBDF52F161309AA003AC923 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2CBDF51C161308FE003AC923 /* STReachability */;
@@ -429,45 +407,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2C61CE7D16A6D7BC00BA662E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				INFOPLIST_FILE = STReachabilityTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		2C61CE7E16A6D7BC00BA662E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				INFOPLIST_FILE = STReachabilityTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 		2C61CE6516A6D6D500BA662E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -637,15 +576,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C61CE7F16A6D7BC00BA662E /* Build configuration list for PBXNativeTarget "STReachabilityTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C61CE7D16A6D7BC00BA662E /* Debug */,
-				2C61CE7E16A6D7BC00BA662E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2C61CE6416A6D6D500BA662E /* Build configuration list for PBXNativeTarget "STReachabilityMocking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
