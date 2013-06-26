@@ -196,6 +196,7 @@ void STReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 		}
 
 		if (!SCNetworkReachabilitySetDispatchQueue(_reachability, queue)) {
+			SCNetworkReachabilitySetCallback(_reachability, NULL, NULL);
 			return nil;
 		}
 	}
