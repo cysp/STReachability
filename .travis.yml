@@ -1,3 +1,5 @@
 language: objective-c
 xcode_project: STReachability.xcodeproj
 xcode_scheme: STReachability
+xcode_sdk:
+    - iphonesimulator7.1
