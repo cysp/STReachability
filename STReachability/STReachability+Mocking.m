@@ -17,6 +17,36 @@ static NSHashTable *gSTReachabilityMocks = nil;
 @property (nonatomic,assign) enum STReachabilityStatus status;
 @end
 
+
+@implementation STReachability (Mocking)
+
++ (id)allocWithZone:(NSZone *)zone {
+	if (gSTReachabilityIsMocking) {
+		return (id)[STMockReachability allocWithZone:zone];
+	}
+	return [super allocWithZone:zone];
+}
+
++ (void)setMocking:(BOOL)mocking {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+	if (gSTReachabilityIsMocking != mocking) {
+		gSTReachabilityIsMocking = mocking;
+		if (mocking && !gSTReachabilityMocks) {
+			gSTReachabilityMocks = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsObjectPointerPersonality|NSPointerFunctionsWeakMemory capacity:0];
+		}
+	}
+}
+
++ (void)setMockReachabilityStatus:(enum STReachabilityStatus)status {
+	NSAssert([NSThread isMainThread], @"not on main thread", nil);
+	for (STMockReachability *mock in gSTReachabilityMocks) {
+		[mock setStatus:status];
+	}
+}
+
+@end
+
+
 @implementation STMockReachability {
 @private
 	STReachabilityBlock _block;
@@ -65,32 +95,4 @@ static NSHashTable *gSTReachabilityMocks = nil;
 		}
 	}
 }
-@end
-
-
-@implementation STReachability (Mocking)
-
-+ (void)load {
-	gSTReachabilityMocks = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsObjectPointerPersonality|NSPointerFunctionsWeakMemory capacity:0];
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-	if (gSTReachabilityIsMocking) {
-		return (id)[STMockReachability allocWithZone:zone];
-	}
-	return [super allocWithZone:zone];
-}
-
-+ (void)setMocking:(BOOL)mocking {
-	NSAssert([NSThread isMainThread], @"not on main thread", nil);
-	gSTReachabilityIsMocking = mocking;
-}
-
-+ (void)setMockReachabilityStatus:(enum STReachabilityStatus)status {
-	NSAssert([NSThread isMainThread], @"not on main thread", nil);
-	for (STMockReachability *mock in gSTReachabilityMocks) {
-		[mock setStatus:status];
-	}
-}
-
 @end
