@@ -5,19 +5,20 @@
 //  Copyright (c) 2013 Scott Talbot. All rights reserved.
 //
 
-#import "STReachabilityTests.h"
+@import XCTest;
 
 #import "STReachability.h"
 #import "STReachability+Mocking.h"
 
 
+@interface STReachabilityTests : XCTestCase @end
+
 @implementation STReachabilityTests
 
-- (void)setUpTestWithSelector:(SEL)testMethod {
-	[super setUpTestWithSelector:testMethod];
+- (void)setUp {
+	[super setUp];
 
-	NSString * const testMethodString = NSStringFromSelector(testMethod);
-	if ([testMethodString hasSuffix:@"Mocked"]) {
+	if ([self.name hasSuffix:@"Mocked]"]) {
 		[STReachability setMocking:YES];
 	}
 }
@@ -36,12 +37,12 @@
 		STReachability * const reachability = [STReachability reachabilityWithBlock:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 			++nReachabilityStatusChangesSeen;
 		}];
-		STAssertNotNil(reachability, @"");
+		XCTAssertNotNil(reachability, @"");
 		if (!reachability) {
 			return;
 		}
 
-		STAssertEquals(nReachabilityStatusChangesSeen, (NSUInteger)0, @"", nil);
+		XCTAssertEqual(nReachabilityStatusChangesSeen, (NSUInteger)0);
 
 		(void)reachability;
 	}
@@ -52,14 +53,14 @@
 		STReachability * const reachability = [STReachability reachabilityWithBlock:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 			++nReachabilityStatusChangesSeen;
 		}];
-		STAssertNotNil(reachability, @"");
+		XCTAssertNotNil(reachability, @"");
 		if (!reachability) {
 			return;
 		}
 
 		[STReachability setMockReachabilityStatus:STReachabilityStatusReachableViaWifi];
 
-		STAssertEquals(nReachabilityStatusChangesSeen, (NSUInteger)1, @"", nil);
+		XCTAssertEqual(nReachabilityStatusChangesSeen, (NSUInteger)1);
 
 		(void)reachability;
 	}
@@ -70,7 +71,7 @@
 		STReachability * const reachability = [STReachability reachabilityWithBlock:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 			++nReachabilityStatusChangesSeen;
 		}];
-		STAssertNotNil(reachability, @"");
+		XCTAssertNotNil(reachability, @"");
 		if (!reachability) {
 			return;
 		}
@@ -78,7 +79,7 @@
 		[STReachability setMockReachabilityStatus:STReachabilityStatusReachableViaWifi];
 		[STReachability setMockReachabilityStatus:STReachabilityStatusReachableViaWWAN];
 
-		STAssertEquals(nReachabilityStatusChangesSeen, (NSUInteger)2, @"", nil);
+		XCTAssertEqual(nReachabilityStatusChangesSeen, (NSUInteger)2);
 
 		(void)reachability;
 	}
@@ -89,7 +90,7 @@
 		STReachability * const reachability1 = [STReachability reachabilityWithBlock:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 			++nReachabilityStatusChangesSeen;
 		}];
-		STAssertNotNil(reachability1, @"");
+		XCTAssertNotNil(reachability1, @"");
 		if (!reachability1) {
 			return;
 		}
@@ -97,14 +98,14 @@
 		STReachability * const reachability2 = [STReachability reachabilityWithBlock:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 			++nReachabilityStatusChangesSeen;
 		}];
-		STAssertNotNil(reachability2, @"");
+		XCTAssertNotNil(reachability2, @"");
 		if (!reachability2) {
 			return;
 		}
 
 		[STReachability setMockReachabilityStatus:STReachabilityStatusReachableViaWifi];
 
-		STAssertEquals(nReachabilityStatusChangesSeen, (NSUInteger)2, @"", nil);
+		XCTAssertEqual(nReachabilityStatusChangesSeen, (NSUInteger)2);
 
 		(void)reachability1;
 		(void)reachability2;
@@ -116,7 +117,7 @@
 	@autoreleasepool {
 		reachability = [STReachability reachability];
 	}
-	STAssertNil(reachability, @"", nil);
+	XCTAssertNil(reachability);
 }
 
 - (void)testRetainCycleMocked {
@@ -124,7 +125,7 @@
 	@autoreleasepool {
 		reachability = [STReachability reachability];
 	}
-	STAssertNil(reachability, @"", nil);
+	XCTAssertNil(reachability);
 }
 
 - (void)testReachabilityInternet {
@@ -132,7 +133,7 @@
 	STReachability * const reachability = [STReachability reachabilityWithBlock:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 		[reachabilityStatusesSeen addObject:@(status)];
 	}];
-	STAssertNotNil(reachability, @"");
+	XCTAssertNotNil(reachability, @"");
 	if (!reachability) {
 		return;
 	}
@@ -141,9 +142,9 @@
 	[[NSRunLoop mainRunLoop] runUntilDate:resolutionTimeout];
 
 	NSUInteger const reachabilityStatusesSeenCount = [reachabilityStatusesSeen count];
-	STAssertEquals(reachabilityStatusesSeenCount, (NSUInteger)1, @"", nil);
+	XCTAssertEqual(reachabilityStatusesSeenCount, (NSUInteger)1);
 	if (reachabilityStatusesSeenCount > 0) {
-		STAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]), @"", nil);
+		XCTAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]));
 	}
 
 	(void)reachability;
@@ -154,7 +155,7 @@
 	STReachability * const reachability = [STReachability reachabilityWithHost:@"8.8.8.8" block:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 		[reachabilityStatusesSeen addObject:@(status)];
 	}];
-	STAssertNotNil(reachability, @"");
+	XCTAssertNotNil(reachability, @"");
 	if (!reachability) {
 		return;
 	}
@@ -163,9 +164,9 @@
 	[[NSRunLoop mainRunLoop] runUntilDate:resolutionTimeout];
 
 	NSUInteger const reachabilityStatusesSeenCount = [reachabilityStatusesSeen count];
-	STAssertEquals(reachabilityStatusesSeenCount, (NSUInteger)1, @"", nil);
+	XCTAssertEqual(reachabilityStatusesSeenCount, (NSUInteger)1);
 	if (reachabilityStatusesSeenCount > 0) {
-		STAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]), @"", nil);
+		XCTAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]));
 	}
 
 	(void)reachability;
@@ -176,7 +177,7 @@
 	STReachability * const reachability = [STReachability reachabilityWithHost:@"nonexistent.example.org" block:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 		[reachabilityStatusesSeen addObject:@(status)];
 	}];
-	STAssertNotNil(reachability, @"");
+	XCTAssertNotNil(reachability, @"");
 	if (!reachability) {
 		return;
 	}
@@ -185,9 +186,9 @@
 	[[NSRunLoop mainRunLoop] runUntilDate:resolutionTimeout];
 
 	NSUInteger const reachabilityStatusesSeenCount = [reachabilityStatusesSeen count];
-	STAssertEquals(reachabilityStatusesSeenCount, (NSUInteger)1, @"", nil);
+	XCTAssertEqual(reachabilityStatusesSeenCount, (NSUInteger)1);
 	if (reachabilityStatusesSeenCount > 0) {
-		STAssertTrue(STReachabilityStatusIsUnreachable([reachabilityStatusesSeen[0] unsignedIntegerValue]), @"", nil);
+		XCTAssertTrue(STReachabilityStatusIsUnreachable([reachabilityStatusesSeen[0] unsignedIntegerValue]));
 	}
 
 	(void)reachability;
@@ -198,7 +199,7 @@
 	STReachability * const reachability = [STReachability reachabilityWithHost:@"example.org" block:^(enum STReachabilityStatus status, enum STReachabilityStatus previousStatus) {
 		[reachabilityStatusesSeen addObject:@(status)];
 	}];
-	STAssertNotNil(reachability, @"");
+	XCTAssertNotNil(reachability, @"");
 	if (!reachability) {
 		return;
 	}
@@ -207,9 +208,9 @@
 	[[NSRunLoop mainRunLoop] runUntilDate:resolutionTimeout];
 
 	NSUInteger const reachabilityStatusesSeenCount = [reachabilityStatusesSeen count];
-	STAssertEquals(reachabilityStatusesSeenCount, (NSUInteger)1, @"", nil);
+	XCTAssertEqual(reachabilityStatusesSeenCount, (NSUInteger)1);
 	if (reachabilityStatusesSeenCount > 0) {
-		STAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]), @"", nil);
+		XCTAssertTrue(STReachabilityStatusIsReachable([reachabilityStatusesSeen[0] unsignedIntegerValue]));
 	}
 
 	(void)reachability;
